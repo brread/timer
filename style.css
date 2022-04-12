@@ -1,0 +1,18 @@
+* {
+    font-family: monospace;
+    background-color: #ffebcd;
+    user-select: none;
+}
+
+#timer {
+    text-align: center;
+    margin-top: 40vh;
+    font-size: 50px;
+}
+
+#solves {
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    cursor: pointer;
+}
