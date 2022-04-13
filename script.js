@@ -1,5 +1,4 @@
 let state = 'not initialized';
-let sdate = new Date().getTime();
 let timestamp;
 let spacepressed;
 let timep;
@@ -25,7 +24,12 @@ window.addEventListener('keydown', function (key) {
         spacepressed = true;
         if (state == 'started') {
             state = 'finished';
-            console.log('finished');
+            minutes = Math.floor((((timep - timestamp)/1000).toFixed(2)) / 60);
+            if (minutes > 0) {
+                let dcsns = (((timep - timestamp)/1000).toFixed(2)) - Math.floor(((timep - timestamp)/1000).toFixed(2));
+                timerdisplay += dcsns.toFixed(2).toString().replace('0.', '.');
+                ttext.innerText = timerdisplay;
+            }
         } else if (state == 'not initialized') {
             state = 'starting';
         }
@@ -58,7 +62,15 @@ function checks() {
         } else if (state == 'started') {
             timep = new Date().getTime();
             ttext.style.color = 'black';
-            ttext.innerText = ((timep - timestamp)/1000).toFixed(2);
+            timerdisplay = '';
+            seconds = ((timep - timestamp)/1000).toFixed(2);
+            minutes = Math.floor(seconds / 60);
+            hours = Math.floor(seconds / 3600);
+            seconds = seconds % 60;
+            if (hours > 0) {timerdisplay += hours + ':';}
+            if (minutes > 0) {minutes %= 60; if (hours > 0) {minutes = String(minutes).padStart(2, "0");} timerdisplay += minutes + ':'; seconds = Math.floor(seconds); seconds = String(seconds).padStart(2, "0");} else {seconds = seconds.toFixed(2);}
+            timerdisplay += seconds;
+            ttext.innerText = timerdisplay;
         } else if (state == 'not initialized') {
             ttext.style.color = 'black';
         }
