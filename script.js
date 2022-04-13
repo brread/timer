@@ -127,9 +127,8 @@ solves.addEventListener('click', function () {
         let bar = document.createElement('div');
         let choose = document.createElement('select');
         let op1 = document.createElement('option');
-        let session = document.createElement('span');
         op1.value = '1';
-        op1.innerText = '3x3';
+        op1.innerText = '1';
         choose.style.position = 'absolute';
         choose.style.fontSize = '16px';
         choose.style.cursor = 'pointer';
@@ -140,14 +139,6 @@ solves.addEventListener('click', function () {
         choose.style.width = "40px";
         choose.style.height = "20px";
         choose.appendChild(op1);
-        session.style.position = 'relative';
-        session.style.fontSize = '16px';
-        session.style.margin = 'auto';
-        session.style.marginRight = "55%";
-        session.innerText = "Session";
-        session.style.color = "black";
-        session.style.textAlign = 'right';
-        session.style.display = 'block';
         bar.appendChild(session)
         bar.appendChild(choose);
         bar.style.width = '100%';
