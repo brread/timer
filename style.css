@@ -10,6 +10,13 @@
     font-size: 50px;
 }
 
+#settings {
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+    cursor: pointer;
+}
+
 #solves {
     position: absolute;
     right: 20px;
