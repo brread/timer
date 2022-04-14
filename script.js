@@ -204,7 +204,6 @@ solves.addEventListener('click', function () {
         let op5 = document.createElement('option');
         op5.value = '5';
         op5.innerText = '5';
-        choose.selectedIndex = v - 1;
         span.innerText = "Session"
         nobr.style.position = 'absolute';
         choose.style.fontSize = '16px';
@@ -221,6 +220,7 @@ solves.addEventListener('click', function () {
         choose.appendChild(op4);
         choose.appendChild(op5);
         nobr.appendChild(span);
+        choose.selectedIndex = v - 1;
         nobr.appendChild(choose);
         bar.appendChild(nobr);
         span.style.color = 'black';
@@ -244,7 +244,6 @@ solves.addEventListener('click', function () {
         solvesmenu.appendChild(bar);
         solvesmenu.appendChild(tlist);
         document.body.appendChild(solvesmenu);
-        v = Number(document.getElementById('choose').value);
         loadtimes();
     } else if (solvesstatus) {
         solvesstatus = false;
