@@ -21,6 +21,11 @@ setInterval(function () {
 }, 1);
 
 function load() {
+    if (localStorage.v) {
+        v = localStorage.v;
+    } else {
+        localStorage.v = 1;
+    }
     if (localStorage.times) {
         times = JSON.parse(localStorage.times);
     } else {
@@ -186,6 +191,7 @@ solves.addEventListener('click', function () {
         let choose = document.createElement('select');
         choose.onchange = (e) => {
             v = e.target.value;
+            localStorage.v = v;
             loadtimes();
         }
         choose.id = 'choose';
