@@ -198,6 +198,7 @@ solves.addEventListener('click', function () {
     if (!solvesstatus && !settingsstatus) {
         solvesstatus = true;
         solvesmenu = document.createElement('div');
+        textmenu = document.createElement('div');
         let bar = document.createElement('div');
         tlist = document.createElement('table');
         tlist.id = "tlist";
@@ -253,18 +254,26 @@ solves.addEventListener('click', function () {
         bar.style.margin = '0';
         bar.style.top = '0';
         bar.style.color = "#ffebc4";
-        bar.style.borderBottom = "2px solid black";
+        bar.style.border = "2px solid black";
         bar.style.position = "relative";
         solvesmenu.style.position = 'absolute';
+        textmenu.style.width = '100%';
+        textmenu.style.height = '100%';
+        textmenu.position = 'relative';
+        textmenu.style.overflowY = 'scroll';
         solvesmenu.style.width = "50vw";
         solvesmenu.style.height = "65vh";
         solvesmenu.style.backgroundColor = '#ffebc4';
-        solvesmenu.style.border = "2px solid black";
+        textmenu.style.backgroundColor = '#ffebc4';
+        textmenu.style.borderLeft = "2px solid black";
+        textmenu.style.borderRight = "2px solid black";
+        textmenu.style.borderBottom = "2px solid black";
         solvesmenu.style.top = "50%";
         solvesmenu.style.left = "50%";
         solvesmenu.style.transform = "translate(-50%, -50%)";
         solvesmenu.appendChild(bar);
-        solvesmenu.appendChild(tlist);
+        textmenu.appendChild(tlist);
+        solvesmenu.appendChild(textmenu);
         document.body.appendChild(solvesmenu);
         loadtimes();
     } else if (solvesstatus) {
