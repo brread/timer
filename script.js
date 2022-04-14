@@ -207,7 +207,7 @@ solves.addEventListener('click', function () {
         choose.selectedIndex = v - 1;
         span.innerText = "Session"
         nobr.style.position = 'absolute';
-        choose.style.font   Size = '16px';
+        choose.style.fontSize = '16px';
         choose.style.cursor = 'pointer';
         choose.style.appearance = 'none';
         nobr.style.left = '50%';
