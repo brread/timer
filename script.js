@@ -81,7 +81,13 @@ window.addEventListener('keydown', function (key) {
         spacepressed = true;
         if (state == 'started') {
             state = 'finished';
+            minutes = Math.floor((((timep - timestamp)/1000).toFixed(2)) / 60);
             times[v].times[Object.keys(times[v].times).length + 1] = Number(ttext.innerText);
+            if (minutes > 0) {
+                let dcsns = (((timep - timestamp)/1000).toFixed(2)) - Math.floor(((timep - timestamp)/1000).toFixed(2));
+                timerdisplay += dcsns.toFixed(2).toString().replace('0.', '.');
+                ttext.innerText = timerdisplay;
+            }
         } else if (state == 'not initialized') {
             state = 'starting';
         }
