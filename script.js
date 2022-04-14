@@ -131,6 +131,7 @@ function loadtimes() {
         tr.style.color = 'black';
         tr.style.fontSize = '16px';
         tr.style.fontWeight = 'bold';
+        tr.style.backgroundColor = "#ffebc4";
         tr.innerText = times[v].times[Object.keys(times[v].times)[i]];
         tlist.prepend(tr);
     }
@@ -186,6 +187,7 @@ solves.addEventListener('click', function () {
         let bar = document.createElement('div');
         tlist = document.createElement('table');
         tlist.id = "tlist";
+        tlist.style.backgroundColor = "#ffebc4";
         let nobr = document.createElement('nobr');
         let span = document.createElement('span');
         let choose = document.createElement('select');
