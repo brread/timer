@@ -132,7 +132,7 @@ function loadtimes() {
         tr.style.fontSize = '16px';
         tr.style.fontWeight = 'bold';
         tr.innerText = times[v].times[Object.keys(times[v].times)[i]];
-        tlist.appendChild(tr);
+        tlist.prepend(tr);
     }
 }
 
