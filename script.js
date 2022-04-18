@@ -16,10 +16,21 @@ let cubesize = 3;
 const ttext = document.getElementById('timer');
 const settings = document.getElementById('settings');
 const solves = document.getElementById('solves');
-const Scrambler = require('sr-scrambler');
 
-let ns = Scrambler.cube(cubesize);
-console.log(ns);
+
+
+function scramble() {
+    let Http = new XMLHttpRequest();
+    let url = 'http://scrambler-api.herokuapp.com/3x3x3';
+    Http.open('GET', url);
+    Http.send();
+    
+    Http.onreadystatechange = (e) => {
+        console.log(JSON.stringify(Http.responseText[0]));
+    }
+}
+
+scramble();
 
 setInterval(function () {
     checks()
