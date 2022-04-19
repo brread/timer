@@ -17,21 +17,6 @@ const ttext = document.getElementById('timer');
 const settings = document.getElementById('settings');
 const solves = document.getElementById('solves');
 
-
-
-function scramble() {
-    let Http = new XMLHttpRequest();
-    let url = 'http://scrambler-api.herokuapp.com/3x3x3';
-    Http.open('GET', url);
-    Http.send();
-    
-    Http.onreadystatechange = (e) => {
-        console.log(JSON.stringify(Http.responseText[0]));
-    }
-}
-
-scramble();
-
 setInterval(function () {
     checks()
 }, 1);
@@ -214,7 +199,9 @@ solves.addEventListener('click', function () {
     if (!solvesstatus && !settingsstatus) {
         solvesstatus = true;
         solvesmenu = document.createElement('div');
+        solvesmenu.display = 'block';
         textmenu = document.createElement('div');
+        let reset = document.createElement('h2');
         let bar = document.createElement('div');
         tlist = document.createElement('table');
         tlist.id = "tlist";
@@ -226,6 +213,22 @@ solves.addEventListener('click', function () {
             v = e.target.value;
             localStorage.v = v;
             loadtimes();
+        }
+        reset.innerText = 'reset';
+        reset.style.fontWeight = 'underline';
+        reset.style.marginRight = '5px';
+        reset.style.marginBottom = '5px';
+        reset.style.right = '0';
+        reset.style.bottom = '0';
+        reset.style.position = 'absolute';
+        reset.style.cursor = 'pointer';
+        reset.onclick = () => {
+            let confirmation = confirm('Are you sure you want to reset all times in this session?');
+            if (!confirmation) return;
+            times[v].times = {};
+            solvesmenu.remove();
+            solvesstatus = false;
+            solves.click();
         }
         choose.id = 'choose';
         let op1 = document.createElement('option');
@@ -274,7 +277,7 @@ solves.addEventListener('click', function () {
         bar.style.position = "relative";
         solvesmenu.style.position = 'absolute';
         textmenu.style.width = '100%';
-        textmenu.style.height = '100%';
+        textmenu.style.height = '90%';
         textmenu.position = 'relative';
         textmenu.style.overflowY = 'scroll';
         solvesmenu.style.width = "50vw";
@@ -284,16 +287,18 @@ solves.addEventListener('click', function () {
         textmenu.style.borderLeft = "2px solid black";
         textmenu.style.borderRight = "2px solid black";
         textmenu.style.borderBottom = "2px solid black";
+        solvesmenu.position = "relative";
         solvesmenu.style.top = "50%";
         solvesmenu.style.left = "50%";
         solvesmenu.style.transform = "translate(-50%, -50%)";
         solvesmenu.appendChild(bar);
         textmenu.appendChild(tlist);
+        solvesmenu.appendChild(reset);
         solvesmenu.appendChild(textmenu);
         document.body.appendChild(solvesmenu);
         loadtimes();
     } else if (solvesstatus) {
         solvesstatus = false;
-        document.body.removeChild(solvesmenu);
+        solvesmenu.remove();
     }
 })
